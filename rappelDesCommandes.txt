@@ -1,0 +1,3 @@
+pour télécharger et installer nest -> npm install -g @nestjs/cli
+créer un projet avec la commande -> nest new NomDuProjet et choisir npm
+Pour lancer le projet en observateur, nest start --watch
