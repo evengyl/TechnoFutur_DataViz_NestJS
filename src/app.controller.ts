@@ -1,52 +1,20 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 
-@Controller("api/todos")
-export class AppController 
-{
-  constructor() {}
-  /*
-    GET:localhost:3000/api/todos/         ->get all todos GET
-    GET:localhost:3000/api/todos/42       ->get one todo GET
-    POST:localhost:3000/api/todos/        ->post un nouveau todo POST
-    PUT/PATCH:localhost:3000/api/todos/42 -> put/patch permet la modification d'un todo PUT/PATCH
-    DELETE:localhost:3000/api/todos/42    -> delete un todo DELETE
-  */
-
-    @Get()
-    getAll() : any[]
+@Controller()
+export class AppController {
+    
+    @Get('testReqExpress')
+    testExpress(@Req() request : Request, @Res() response : Response) : void
     {
-      return ["todo 1", "todo 2", "todo 3"]
+        console.log(request)
+        console.log(response)
     }
 
-    @Get(":id")
-    getOneById(@Param('id') id) : any
+    @Post("testBody")
+    testBody(@Body("name") name : string, @Body("dev") dev : boolean)
     {
-      return `todo ${id}`
+        console.log(name)
+        console.log(dev)
     }
-
-    @Post()
-    postTodo(@Body() newTodo) : any
-    {
-      console.log(newTodo)
-      return "Nouveau todo créé"
-    }
-
-    @Patch(':id')
-    updateTodo(@Param('id') id, @Body() updateTodo) : any
-    {
-      console.log(`Todo à modifier : ${id}`)
-      console.log(`Corp de la todo : `)
-      console.log(updateTodo)
-      return `Todo ${id} bien modifiée`
-    }
-
-
-    @Delete(':id')
-    deleteTodo(@Param("id") id) : any
-    {
-      return `Todo ${id} bien supprimée`
-    }
-
-  
 }
