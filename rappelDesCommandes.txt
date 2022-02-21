@@ -5,3 +5,4 @@ Pour lancer le projet en observateur, nest start --watch
 
 Pour créer un module -> nest g mo NomModule
 Pour créer un controller -> nest g co NomController
+Pour créer un service -> nest g s NomService
