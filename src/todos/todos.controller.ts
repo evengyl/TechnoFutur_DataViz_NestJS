@@ -1,4 +1,5 @@
 import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query } from "@nestjs/common";
+import { UsersService } from "src/shared/users.service";
 import { Todos } from "./models/Todos.model";
 
 @Controller("api/todos")
@@ -6,7 +7,7 @@ export class TodosController {
 
     listTodos : Todos[]
 
-    constructor() {
+    constructor(private usersService : UsersService) {
       this.listTodos = []
 
 
